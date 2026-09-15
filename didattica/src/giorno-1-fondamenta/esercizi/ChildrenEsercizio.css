@@ -1,4 +1,4 @@
-@import "./variabili.css";
+@import '../variabili.css';
 
 .esercizio-children {
   padding: var(--spaziatura-lg);
