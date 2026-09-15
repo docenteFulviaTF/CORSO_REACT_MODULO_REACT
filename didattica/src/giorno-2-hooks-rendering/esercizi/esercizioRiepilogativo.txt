@@ -1,0 +1,74 @@
+Esercizio riepilogativo - Giorno 2 (Hooks e Rendering)
+ 
+ARGOMENTI COPERTI
+- useState (base e con oggetti/array)
+- useEffect (base e con dipendenze)
+- Rendering condizionale
+- Rendering di liste
+- useRef
+ 
+Esclusi da questo esercizio: useMemo, useCallback, gestione degli errori con state dedicato (niente pattern tipo UseStateErrori).
+ 
+---
+ 
+CONSEGNA
+ 
+Realizza un'app "Lista Preferiti" (es. film, libri o citta' - scegli tu il dominio) con due componenti.
+ 
+1) App (componente padre)
+ 
+- Stato principale: un array di oggetti, es.
+ 
+    const [preferiti, setPreferiti] = useState([
+      { id: 1, titolo: "Esempio", visto: false }
+    ]);
+ 
+- Uno state separato per il campo di input testuale (nome del nuovo elemento da aggiungere).
+- Un useEffect con dipendenza [preferiti] che stampa in console la lunghezza dell'array ogni volta che cambia:
+ 
+    useEffect(() => {
+      console.log("Numero preferiti:", preferiti.length);
+    }, [preferiti]);
+ 
+2) Aggiunta di un elemento
+ 
+- Input controllato + bottone "Aggiungi".
+- Al click, crea un nuovo oggetto e aggiungilo all'array senza mutare quello esistente (usa spread [...preferiti, nuovo]).
+- Dopo l'aggiunta, svuota il campo di input.
+ 
+3) useRef
+ 
+- Crea un ref sull'elemento <input> del form (useRef(null), collegato con l'attributo ref).
+- Dopo aver aggiunto un elemento (dentro la funzione che gestisce l'aggiunta, subito dopo aver aggiornato lo state), richiama inputRef.current.focus() per riportare il focus tastiera sul campo di input, cosi' l'utente puo' scrivere subito il titolo successivo senza dover ricliccare sul campo.
+- Il ref non deve essere usato per leggere il valore del campo (quello resta gestito dallo state, come input controllato): serve solo per l'azione imperativa sul DOM (focus).
+ 
+4) Rendering della lista
+ 
+- Componente ListaPreferiti che riceve l'array come prop.
+- Rendering condizionale: se l'array e' vuoto mostra "Nessun preferito ancora", altrimenti mostra la lista.
+- Ogni elemento e' un <li key={elemento.id}> con:
+  - il titolo,
+  - un checkbox collegato al campo "visto" (al click aggiorna l'oggetto nell'array creando un nuovo array con lo spread, senza mutare l'oggetto originale: { ...elemento, visto: !elemento.visto }),
+  - il testo dell'elemento va barrato/in corsivo (con classe CSS condizionale) se "visto" e' true.
+- Un bottone "Rimuovi" per ogni elemento che lo toglie dall'array (filter).
+ 
+5) Rendering condizionale extra
+ 
+- Sopra la lista, mostra un contatore testuale tipo "Hai segnato come visti X elementi su Y", calcolato al momento del render (senza useMemo: va bene ricalcolarlo ogni volta con un semplice .filter().length).
+ 
+---
+ 
+REQUISITI TECNICI
+ 
+- Nessuna mutazione diretta di array o oggetti nello state: sempre nuovi array/oggetti con spread.
+- key univoca e stabile (usa l'id, non l'indice).
+- Componenti funzione, props in sola lettura.
+- Hook ammessi: useState, useEffect, useRef. Niente useMemo, useCallback.
+- Niente state dedicato alla gestione errori: se vuoi impedire l'aggiunta di un campo vuoto, basta un semplice controllo if prima di aggiornare lo state, senza un secondo state per l'errore.
+ 
+BONUS (facoltativo)
+ 
+- Aggiungi un secondo useEffect (dipendenza sul campo di input) che logga in console il valore digitato ogni volta che cambia, per verificare la differenza tra effetto "ad ogni render" e "solo su dipendenza specifica".
+- Usa un secondo useRef per contare quante volte l'utente ha premuto il bottone "Aggiungi" nella sessione corrente, senza mostrare questo numero nell'interfaccia e senza causare un nuovo render (mostra il valore solo in console, per capire la differenza rispetto a un contatore tenuto con useState).
+ 
+
