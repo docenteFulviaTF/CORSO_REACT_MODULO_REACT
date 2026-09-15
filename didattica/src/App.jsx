@@ -13,6 +13,15 @@ import RenderingCondizionaleVariante from './giorno-2-hooks-rendering/RenderingC
 import UseRefBase from './giorno-2-hooks-rendering/UseRefBase.jsx';
 import UseRefVariante from './giorno-2-hooks-rendering/UseRefVariante.jsx';
 import UseMemoCallbackBase from './giorno-2-hooks-rendering/UseMemoCallbackBase.jsx';
+import ListaPreferiti from './giorno-2-hooks-rendering/esercizi/ListaPreferiti.jsx';
+import GestionePreferiti from './giorno-2-hooks-rendering/esercizi/GestionePreferiti.jsx';
+import UseStateEsercizio from './giorno-2-hooks-rendering/esercizi/UseStateEsercizio.jsx';
+import UseStateOggettiEsercizio from './giorno-2-hooks-rendering/esercizi/UseStateOggettiEsercizio.jsx';
+import UseRefEsercizio from './giorno-2-hooks-rendering/esercizi/UseRefEsercizio.jsx';
+import RenderingListeEsercizio from './giorno-2-hooks-rendering/esercizi/RenderingListeEsercizio.jsx';
+import UseMemoCallbackEsercizio from './giorno-2-hooks-rendering/esercizi/UseMemoCallbackEsercizio.jsx';
+import UseEffectEsercizio from './giorno-2-hooks-rendering/esercizi/UseEffectEsercizio.jsx';
+
 function App() {
   return (
     <>
@@ -30,7 +39,15 @@ function App() {
       {/* <RenderingCondizionaleVariante /> */}
       {/* <UseRefBase /> */}
       {/* <UseRefVariante /> */}
-      <UseMemoCallbackBase />
+      {/* <UseMemoCallbackBase /> */}
+      {/* <ListaPreferiti /> */}
+      {/* <GestionePreferiti />*/}
+      {/* <UseStateEsercizio /> */}
+      {/* <UseStateOggettiEsercizio /> */}
+      {/* <UseRefEsercizio /> */}
+      {/* <RenderingListeEsercizio /> */}
+      {/* <UseMemoCallbackEsercizio /> */}
+      <UseEffectEsercizio />
       <Footer />
     </>
   );
