@@ -2,19 +2,18 @@
 // rimuovere un elemento si crea un nuovo array, non si modifica
 // quello esistente con push/splice.
 
-import {useState} from 'react';
-import './comuni.css';
+import { useState } from "react";
+import "./comuni.css";
 
 function UseStateOggettiVariante() {
-  const [attivita, setAttivita] = useState(['Ripasso JSX', 'Esercizi props']);
-
-  const [testo, setTesto] = useState('');
+  const [attivita, setAttivita] = useState(["Ripasso JSX", "Esercizi props"]);
+  const [testo, setTesto] = useState("");
 
   function handleAggiungi() {
-    if (testo.trim() === '') return;
+    if (testo.trim() === "") return;
     // Corretto: nuovo array con spread, non attivita.push(testo)
     setAttivita([...attivita, testo]);
-    setTesto('');
+    setTesto("");
   }
 
   function handleRimuovi(index) {
@@ -26,7 +25,12 @@ function UseStateOggettiVariante() {
     <div className="box">
       <h2 className="titolo">Attività di oggi</h2>
       <div className="bottone-riga">
-        <input className="input" value={testo} onChange={e => setTesto(e.target.value)} placeholder="Nuova attività" />
+        <input
+          className="input"
+          value={testo}
+          onChange={(e) => setTesto(e.target.value)}
+          placeholder="Nuova attività"
+        />
         <button className="bottone" onClick={handleAggiungi}>
           Aggiungi
         </button>

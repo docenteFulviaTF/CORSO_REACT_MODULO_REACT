@@ -2,27 +2,27 @@
 // viene rieseguito. Qui i tre comportamenti fianco a fianco, con un
 // log in console per vedere quando ciascun effetto scatta.
 
-import {useState, useEffect} from 'react';
-import './comuni.css';
+import { useState, useEffect } from "react";
+import "./comuni.css";
 
 function UseEffectDipendenze() {
   const [contatore, setContatore] = useState(0);
-  const [testo, setTesto] = useState('');
+  const [testo, setTesto] = useState("");
 
   // Nessun array: si esegue dopo OGNI render (anche per il testo)
   useEffect(() => {
-    console.log('Effetto SENZA array delle dipendenze — eseguito ad ogni render');
+    console.log("Effetto SENZA array — eseguito ad ogni render");
   });
 
   // Array vuoto: si esegue una sola volta, al montaggio
   useEffect(() => {
-    console.log('Effetto con [] — eseguito solo al montaggio');
+    console.log("Effetto con [] — eseguito solo al montaggio");
   }, []);
 
   // Array con una dipendenza: si esegue solo quando "contatore" cambia
   useEffect(() => {
-    console.log('Effetto con [contatore, testo] — contatore o testo  è cambiato:', contatore);
-  }, [contatore, testo]);
+    console.log("Effetto con [contatore] — contatore è cambiato:", contatore);
+  }, [contatore]);
 
   return (
     <div className="box">
@@ -34,9 +34,9 @@ function UseEffectDipendenze() {
       </div>
       <input
         className="input"
-        style={{marginTop: '8px'}}
+        style={{ marginTop: "8px" }}
         value={testo}
-        onChange={e => setTesto(e.target.value)}
+        onChange={(e) => setTesto(e.target.value)}
         placeholder="Scrivi qualcosa (non tocca l'effetto con [contatore])"
       />
     </div>

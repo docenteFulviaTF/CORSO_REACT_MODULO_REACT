@@ -2,15 +2,15 @@
 // modifica quello esistente. React confronta i riferimenti in
 // memoria per capire se lo stato è cambiato.
 
-import {useState} from 'react';
-import './comuni.css';
+import { useState } from "react";
+import "./comuni.css";
 
 function UseStateOggettiBase() {
-  const [utente, setUtente] = useState({nome: 'Luca', eta: 25});
+  const [utente, setUtente] = useState({ nome: "Luca", eta: 25 });
 
   function handleCompleanno() {
     // Corretto: nuovo oggetto con spread operator
-    setUtente({...utente, eta: utente.eta + 1});
+    setUtente({ ...utente, eta: utente.eta + 1 });
   }
 
   return (
