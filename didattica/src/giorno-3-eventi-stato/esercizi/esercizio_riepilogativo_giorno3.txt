@@ -1,0 +1,112 @@
+ESERCIZIO RIEPILOGATIVO - GIORNO 3
+React: componenti, props, hooks di base, eventi e form
+(NIENTE useReducer, NIENTE Context API — argomenti dei giorni successivi)
+
+====================================================================
+ESERCIZIO A — Lista della spesa
+====================================================================
+
+Obiettivo: costruire un componente ListaSpesa che permetta di gestire
+una lista di articoli da acquistare.
+
+Requisiti:
+
+1. Lo stato della lista è un array di oggetti { id, nome, quantita },
+   gestito con useState (nessuna mutazione diretta dell'array: usare
+   sempre spread/filter per creare un nuovo array).
+
+2. Un form controllato con due campi (nome articolo, quantità) e un
+   pulsante "Aggiungi". Entrambi i campi input devono avere il loro
+   value legato allo state e un onChange che lo aggiorna.
+
+3. Alla submit del form (gestire onSubmit e chiamare
+   event.preventDefault()):
+   - se il campo nome è vuoto (dopo un trim), mostrare un messaggio
+     di errore sotto al form e NON aggiungere l'articolo;
+   - altrimenti aggiungere il nuovo articolo alla lista e svuotare
+     i campi del form.
+
+4. Ogni articolo della lista viene renderizzato con .map() dentro una
+   <ul>, con una key univoca (non l'indice), e un pulsante "Rimuovi"
+   che elimina quell'articolo dalla lista.
+
+5. Rendering condizionale: se la lista è vuota mostrare il messaggio
+   "La lista è vuota. Aggiungi il primo articolo!" al posto della
+   lista.
+
+6. Con useRef, riportare automaticamente il focus sul campo "nome"
+   subito dopo ogni aggiunta riuscita.
+
+7. Con useEffect, ogni volta che la lista cambia, aggiornare
+   document.title in modo che mostri il numero di articoli presenti
+   (es. "Lista della spesa (3)").
+
+Bonus (facoltativo):
+- Calcolare e mostrare il totale degli articoli sommando le quantità.
+- Impedire l'inserimento di quantità minori o uguali a zero.
+
+Vincoli: solo useState, useEffect, useRef. Niente useReducer, niente
+librerie esterne, niente CSS Modules (basta lo stile di default o
+inline).
+
+
+====================================================================
+ESERCIZIO B — Rubrica contatti con ricerca
+====================================================================
+
+Obiettivo: costruire un componente RubricaContatti che gestisca un
+elenco di contatti, con possibilità di aggiungerli, rimuoverli e
+cercarli per nome in tempo reale.
+
+Requisiti:
+
+1. Lo stato dei contatti è un array di oggetti
+   { id, nome, telefono, email }, gestito con useState.
+
+2. Un form controllato con tre campi (nome, telefono, email) e un
+   pulsante "Aggiungi contatto". Alla submit, se il nome non è vuoto,
+   aggiungere il contatto (con un id univoco, ad es. Date.now()) e
+   svuotare i campi del form.
+
+3. Un campo di ricerca separato (input di tipo testo) collegato a un
+   proprio state. La lista mostrata deve filtrare i contatti il cui
+   nome contiene il testo cercato (case-insensitive), senza bisogno
+   di un pulsante "cerca": il filtro avviene ad ogni render mentre si
+   digita.
+
+4. Rendering condizionale: se nessun contatto corrisponde alla
+   ricerca (o la rubrica è vuota), mostrare "Nessun contatto
+   trovato.".
+
+5. Ogni contatto viene renderizzato con .map() e una key univoca,
+   con un pulsante "Rimuovi" per eliminarlo.
+
+6. Con useRef, riportare il focus sul campo "nome" dopo ogni
+   aggiunta.
+
+7. Con useEffect, loggare in console (o aggiornare document.title)
+   ogni volta che cambia il numero totale di contatti in rubrica.
+
+Bonus (facoltativo):
+- Ordinare alfabeticamente i contatti mostrati (localeCompare).
+- Validare il formato dell'email in modo semplice prima di
+  aggiungere il contatto.
+
+Vincoli: solo useState, useEffect, useRef. Niente useReducer, niente
+Context API (il dato "contatti" resta interno a questo unico
+componente).
+
+
+====================================================================
+NOTE PER LO SVOLGIMENTO
+====================================================================
+
+- Entrambi gli esercizi si possono svolgere in un progetto Vite
+  (npm create vite@latest -- --template react) come componente unico
+  importato in App.jsx, oppure copiando il file .jsx fornito nella
+  soluzione dentro src/.
+- Ricordare le regole del JSX: un solo elemento radice, tag sempre
+  chiusi, className al posto di class.
+- Non modificare mai lo stato direttamente: usare sempre le funzioni
+  set... restituite da useState, passando un nuovo array o un nuovo
+  oggetto.
