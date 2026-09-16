@@ -2,10 +2,9 @@
 // Due componenti fratelli (Interruttore e Indicatore) devono
 // condividere uno stato booleano "acceso", gestito dal genitore.
 
-import { useState } from "react";
-import "./comuni.css";
+import {useState} from 'react';
 
-function Interruttore({ acceso, onChange }) {
+function Interruttore({acceso, onChange}) {
   // SOLUZIONE TODO 1: bottone che chiama onChange invertendo il valore di "acceso"
   return (
     <button className="bottone" onClick={() => onChange(!acceso)}>
@@ -14,12 +13,10 @@ function Interruttore({ acceso, onChange }) {
   );
 }
 
-function Indicatore({ acceso }) {
+function Indicatore({acceso}) {
   // SOLUZIONE TODO 2: mostra un badge diverso (successo/errore) a seconda di "acceso"
   return (
-    <span className={`badge ${acceso ? "badge--successo" : "badge--errore"}`}>
-      {acceso ? "Acceso" : "Spento"}
-    </span>
+    <span className={`badge ${acceso ? 'badge--successo' : 'badge--errore'}`}>{acceso ? 'Acceso' : 'Spento'}</span>
   );
 }
 

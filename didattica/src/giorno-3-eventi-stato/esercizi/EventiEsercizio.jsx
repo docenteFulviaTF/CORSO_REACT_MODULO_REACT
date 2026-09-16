@@ -35,7 +35,7 @@ function EventiEsercizio() {
             <li key={brano.id}>
               {brano.titolo}
               <button
-                className={`bottone bottone--secondario ${isPreferito ? ' bottone--attivo' : ''}`}
+                className={`bottone bottone--secondario ${isPreferito ? 'badge' : ''}`}
                 onClick={() => handlePreferito(brano.id)}>
                 {isPreferito ? 'Non preferito' : 'Preferito'}
               </button>

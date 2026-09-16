@@ -8,7 +8,7 @@ import FormControllatoValidazione from './giorno-3-eventi-stato/FormControllatoV
 import LiftingStateBase from './giorno-3-eventi-stato/LiftingStateBase.jsx';
 import LiftingStateTreLivelli from './giorno-3-eventi-stato/LiftingStateTreLivelli.jsx';
 import ContextApiVsProps from './giorno-3-eventi-stato/ContextApiVsProps.jsx';
-import EventiEsercizio from './giorno-3-eventi-stato/esercizi/EventiEsercizio.jsx';
+import RubricaContatti from './giorno-3-eventi-stato/esercizi/RubricaContatti.jsx';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       {/* <LiftingStateBase /> */}
       {/* <LiftingStateTreLivelli /> */}
       {/* <ContextApiVsProps /> */}
-      <EventiEsercizio />
+      <RubricaContatti />
       <Footer />
     </>
   );
