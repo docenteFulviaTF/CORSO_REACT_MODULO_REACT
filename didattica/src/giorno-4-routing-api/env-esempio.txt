@@ -1,0 +1,7 @@
+# File .env - da rinominare in .env e NON versionare (deve stare nel .gitignore)
+# In Vite le variabili devono iniziare con VITE_
+
+VITE_API_URL=https://api.esempio.com
+VITE_API_KEY=la_mia_chiave_segreta
+
+# Nel codice si accede con: import.meta.env.VITE_API_URL
