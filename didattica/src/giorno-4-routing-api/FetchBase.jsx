@@ -1,8 +1,9 @@
 // Consumo di API con Fetch, versione con .then/.catch.
 // useEffect avvia la chiamata al montaggio, useState conserva i dati.
 
-import { useState, useEffect } from "react";
-import "./comuni.css";
+import {useState, useEffect} from 'react';
+// import './comuni.css';
+import style from './FetchBase.module.css';
 
 function FetchBase() {
   const [utenti, setUtenti] = useState([]);
@@ -10,16 +11,17 @@ function FetchBase() {
   const [errore, setErrore] = useState(null);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        if (!response.ok) throw new Error("Errore del server");
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        if (!response.ok) throw new Error('Errore del server');
         return response.json();
       })
-      .then((dati) => {
+      .then(dati => {
+        console.log(dati);
         setUtenti(dati);
         setCaricamento(false);
       })
-      .catch((err) => {
+      .catch(err => {
         setErrore(err.message);
         setCaricamento(false);
       });
@@ -30,10 +32,12 @@ function FetchBase() {
 
   return (
     <div className="box">
-      <h2 className="titolo">Utenti (fetch con .then)</h2>
+      <h2 className={style.titolo}>Utenti (fetch con .then)</h2>
       <ul className="lista">
-        {utenti.map((utente) => (
-          <li key={utente.id}>{utente.name}</li>
+        {utenti.map(utente => (
+          <li key={utente.id}>
+            {utente.name} ({utente.username}) {utente.email}
+          </li>
         ))}
       </ul>
     </div>

@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+#.env andrebbe scommentato ma per esigenze didattiche metto il file sul repo remoto
+
 *.zip
 *copy*

@@ -9,6 +9,13 @@ import LiftingStateBase from './giorno-3-eventi-stato/LiftingStateBase.jsx';
 import LiftingStateTreLivelli from './giorno-3-eventi-stato/LiftingStateTreLivelli.jsx';
 import ContextApiVsProps from './giorno-3-eventi-stato/ContextApiVsProps.jsx';
 import RubricaContatti from './giorno-3-eventi-stato/esercizi/RubricaContatti.jsx';
+import RoutingBase from './giorno-4-routing-api/RoutingBase.jsx';
+import RoutingParametri from './giorno-4-routing-api/RoutingParametri.jsx';
+import RoutingNavigazione from './giorno-4-routing-api/RoutingNavigazione.jsx';
+import FetchBase from './giorno-4-routing-api/FetchBase.jsx';
+import FetchAsync from './giorno-4-routing-api/FetchAsync.jsx';
+import EsempioUsoPost from './giorno-4-routing-api/EsempioUsoPost.jsx';
+import EsempioUsoUseFetch from './giorno-4-routing-api/EsempioUsoUseFetch.jsx';
 
 function App() {
   return (
@@ -21,7 +28,7 @@ function App() {
       {/* <LiftingStateBase /> */}
       {/* <LiftingStateTreLivelli /> */}
       {/* <ContextApiVsProps /> */}
-      <RubricaContatti />
+      <EsempioUsoUseFetch />
       <Footer />
     </>
   );
