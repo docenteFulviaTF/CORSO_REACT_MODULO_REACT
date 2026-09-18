@@ -14,19 +14,37 @@ function ElencoArticoli() {
   return (
     <div className="box">
       <h2 className="titolo">Articoli</h2>
-      {/* TODO 1: mostra un Link per ogni articolo verso /articoli/:id */}
+      {/* soluzione */}
+      <ul>
+        {articoli.map(articolo => (
+          <li key={articolo.id}>
+            <Link to={`/articoli/${articolo.id}`}>{articolo.titolo}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 function DettaglioArticolo() {
-  // TODO 2: leggi l'id con useParams e trova l'articolo corrispondente
-  // TODO 3: crea "navigate" con useNavigate
+  // soluzione
+  const {id} = useParams();
+  // useParams restituisce sempre stringhe: senza Number(id) il confronto
+  // con articolo.id (numero) non troverebbe mai corrispondenza
+  const articolo = articoli.find(a => a.id === Number(id));
+
+  // soluzione
+  const navigate = useNavigate();
 
   return (
     <div className="box">
-      {/* TODO 4: mostra il titolo dell'articolo trovato */}
-      {/* TODO 5: bottone "Torna indietro" che chiama navigate("/") */}
+      {/* soluzione */}
+      {articolo ? <h2 className="titolo">{articolo.titolo}</h2> : <p>Articolo non trovato.</p>}
+
+      {/* soluzione */}
+      <button className="bottone" onClick={() => navigate('/')}>
+        Torna indietro
+      </button>
     </div>
   );
 }

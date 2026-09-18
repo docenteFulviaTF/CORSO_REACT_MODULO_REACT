@@ -2,9 +2,17 @@
 // Scrivi la funzione di servizio "creaCommento" e usala in un form
 // che invia un commento con nome e testo.
 
-// TODO 1: scrivi qui la funzione async "creaCommento(dati)" che fa
-// una POST verso "https://jsonplaceholder.typicode.com/comments",
-// con headers Content-Type application/json e body JSON.stringify(dati)
+// soluzione
+async function creaCommento(dati) {
+  const risposta = await fetch('https://jsonplaceholder.typicode.com/comments', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(dati)
+  });
+
+  if (!risposta.ok) throw new Error('Errore API ' + risposta.status);
+  return risposta.json();
+}
 
 import {useState} from 'react';
 
@@ -12,11 +20,21 @@ function PostEsercizio() {
   const [nome, setNome] = useState('');
   const [testo, setTesto] = useState('');
   const [inviando, setInviando] = useState(false);
+  // soluzione (serve per gestire "un eventuale errore" richiesto dal TODO 2)
+  const [errore, setErrore] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // TODO 2: chiama creaCommento con { name: nome, body: testo, email: "test@test.com" }
-    // gestendo lo stato "inviando" e un eventuale errore
+    // soluzione
+    setInviando(true);
+    setErrore(null);
+    try {
+      await creaCommento({name: nome, body: testo, email: 'test@test.com'});
+    } catch (err) {
+      setErrore(err.message);
+    } finally {
+      setInviando(false);
+    }
   }
 
   return (
@@ -25,9 +43,10 @@ function PostEsercizio() {
       <form onSubmit={handleSubmit}>
         <input className="input" value={nome} onChange={e => setNome(e.target.value)} placeholder="Nome" />
         <input className="input" value={testo} onChange={e => setTesto(e.target.value)} placeholder="Commento" />
+        {errore && <p className="errore">Si è verificato un errore: {errore}</p>}
         <div className="bottone-riga">
-          <button className="bottone" type="submit">
-            Invia commento
+          <button className="bottone" type="submit" disabled={inviando}>
+            {inviando ? 'Invio...' : 'Invia commento'}
           </button>
         </div>
       </form>

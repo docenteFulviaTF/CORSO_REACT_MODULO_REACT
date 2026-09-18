@@ -1,0 +1,27 @@
+Obiettivo
+Creare una piccola applicazione React con più pagine navigabili tramite React Router, organizzata secondo la struttura standard (components / pages / hooks) e con CSS Modules.
+
+N.B. le rotte vanno inserite nel file app.jsx
+
+Requisiti
+
+1. Tre pagine, ognuna in un file separato dentro src/pages/:
+   - Home
+   - ChiSiamo
+   - Contatti
+
+2. Un componente Navbar dentro src/components/Navbar/, visibile su tutte le pagine, con i link di navigazione fatti con Link di React Router.
+
+3. La Navbar deve essere stilata con CSS Modules (Navbar.module.css).
+
+4. Un hook personalizzato useTitolo dentro src/hooks/, che riceve una stringa come parametro e imposta document.title con useEffect. Ogni pagina lo usa per avere un titolo diverso nella scheda del browser.
+
+5. La pagina Contatti deve avere un piccolo form con due campi (nome, email) gestiti come input controllati con useState. Al submit basta fare console.log dei dati, niente invio reale.
+
+6. Aggiungere alle rotte anche una route * che mostra un messaggio semplice tipo "Pagina non trovata".
+
+PER CHI HA VOGLIA E TEMPO
+Prevedere anche una semplice header e footer  in modo comuni a tutti i file. Header e footer sono da mettere fuori dalle rotte. 
+
+
+Niente chiamate API, niente Context, niente librerie di stato esterne. Il progetto deve restare piccolo: l'obiettivo è vedere routing, struttura a cartelle, un hook personalizzato e i CSS Modules che funzionano insieme, non costruire un sito vero.

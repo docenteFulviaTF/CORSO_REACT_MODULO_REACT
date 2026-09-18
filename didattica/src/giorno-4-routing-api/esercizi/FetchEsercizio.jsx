@@ -6,21 +6,45 @@
 import {useState, useEffect} from 'react';
 
 function FetchEsercizio() {
-  // TODO 1: crea gli stati "post", "caricamento" (default true) ed "errore"
+  // soluzione
+  const [post, setPost] = useState([]);
+  const [caricamento, setCaricamento] = useState(true);
+  const [errore, setErrore] = useState(null);
 
   useEffect(() => {
-    // TODO 2: fai una fetch a "https://jsonplaceholder.typicode.com/posts"
-    // e salva il risultato in "post", gestendo il caso di errore
-    // (suggerimento: limita i risultati mostrati con .slice(0, 5)
-    // per non riempire la pagina)
+    // soluzione
+    async function caricaPost() {
+      try {
+        const risposta = await fetch('https://jsonplaceholder.typicode.com/posts');
+        if (!risposta.ok) throw new Error('Errore API ' + risposta.status);
+        const dati = await risposta.json();
+        // limitiamo i risultati per non riempire la pagina
+        setPost(dati.slice(0, 5));
+      } catch (err) {
+        setErrore(err.message);
+      } finally {
+        setCaricamento(false);
+      }
+    }
+
+    caricaPost();
   }, []);
 
-  // TODO 3: gestisci i tre casi (caricamento, errore, dati pronti)
+  // soluzione
+  if (caricamento) return <p>Caricamento...</p>;
+  if (errore) return <p>Si è verificato un errore: {errore}</p>;
 
   return (
     <div className="box box--tratteggiato">
       <h2 className="titolo">Esercizio: lista post</h2>
-      {/* TODO 4: mostra qui la lista */}
+      {/* soluzione */}
+      <ul>
+        {post.map(p => (
+          <li key={p.id}>
+            #{p.id} — {p.title}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
